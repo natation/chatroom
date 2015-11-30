@@ -1,7 +1,7 @@
 Web UI Requirements
 -------------------
 
-- - [ ] Connect and set display name
+- [ ] Connect and set display name
 
 	· The web client should connect to the server via a websocket.
 	· A connected client should be able to pick a display name.
