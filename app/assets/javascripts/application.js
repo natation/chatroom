@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require react
-//= require components
 //= require react_ujs
 //= require ReactRouter.min
 //= require flux
