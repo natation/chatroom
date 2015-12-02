@@ -95,6 +95,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    puma (2.3.2)
+      rack (>= 1.1, < 2.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -139,6 +141,7 @@ GEM
       execjs
       rails (>= 3.2)
       tilt
+    redis (3.2.2)
     sass (3.4.19)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -150,7 +153,6 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     slop (3.6.0)
-    spring (1.5.0)
     sprockets (3.4.1)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
@@ -160,6 +162,9 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    tubesock (0.2.2)
+      rack (>= 1.5.0)
+      websocket (>= 1.1.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -171,6 +176,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    websocket (1.1.1)
 
 PLATFORMS
   ruby
@@ -186,13 +192,15 @@ DEPENDENCIES
   jquery-rails
   pg
   pry-rails
+  puma
   rails (= 4.2.4)
   rails_12factor
   react-bootstrap-rails
   react-rails (~> 1.3.0)
+  redis
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  spring
+  tubesock
   uglifier (>= 1.3.0)
   underscore-rails
   web-console (~> 2.0)
