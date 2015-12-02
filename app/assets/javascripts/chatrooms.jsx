@@ -21,10 +21,9 @@ $(function() {
     render: function() {
       return (
         <div className="chatrooms">
-        <h1>hi</h1>
           {
-            this.state.chatrooms.map(function(chatroom) {
-              return <div className="row">
+            this.state.chatrooms.map(function(chatroom, i) {
+              return <div className="row" key={i}>
                        <Chatroom name={chatroom}/>
                      </div>;
             })

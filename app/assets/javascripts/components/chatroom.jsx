@@ -5,7 +5,7 @@
       return {chats: ChatStore.all()};
     },
     componentDidMount: function() {
-      ChatStore.addChangeListener();
+      ChatStore.addChangeListener(this._onChange);
     },
     componentWillUnmount: function() {
       ChatStore.removeChangeListener();
@@ -16,6 +16,7 @@
     render: function() {
       return (
         <div className="chatroom">
+          {this.props.name}
         </div>
       );
     }

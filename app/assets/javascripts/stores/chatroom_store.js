@@ -20,7 +20,7 @@
     },
     dispatcherId: AppDispatcher.register(function (payload) {
       switch (payload.actionType) {
-        case MessageConstants.CHATROOMS_RECEIVED:
+        case ChatroomConstants.CHATROOMS_RECEIVED:
           resetChatrooms(payload.chatrooms);
           ChatroomStore.emit(CHANGE_EVENT);
           break;
