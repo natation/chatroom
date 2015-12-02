@@ -9,7 +9,7 @@ $(function() {
       return {chatrooms: ChatroomStore.all()};
     },
     componentDidMount: function() {
-      ChatroomStore.addChangeListener();
+      ChatroomStore.addChangeListener(this._onChange);
       ApiUtil.fetchAllChatrooms();
     },
     componentWillUnmount: function() {

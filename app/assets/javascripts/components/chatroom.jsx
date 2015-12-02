@@ -15,14 +15,7 @@
     },
     render: function() {
       return (
-        <div className="chatrooms">
-          {
-            this.state.chatrooms.map(function(chatroom) {
-              return <div className="row">
-                       <Chatroom name={chatroom}/>
-                     </div>;
-            })
-          }
+        <div className="chatroom">
         </div>
       );
     }

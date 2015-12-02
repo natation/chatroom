@@ -1,6 +1,6 @@
 (function(root) {
   'use strict';
-  var _chatrooms = {};
+  var _chatrooms = [];
 
   var CHANGE_EVENT = "CHANGE_EVENT";
 
@@ -20,9 +20,8 @@
     },
     dispatcherId: AppDispatcher.register(function (payload) {
       switch (payload.actionType) {
-        case MessageConstants.MESSAGE_RECEIVED:
-          resetChatrooms(payload.message);
-          resetDelayedMessage(payload.message);
+        case MessageConstants.CHATROOMS_RECEIVED:
+          resetChatrooms(payload.chatrooms);
           ChatroomStore.emit(CHANGE_EVENT);
           break;
       }
