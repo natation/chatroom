@@ -28,7 +28,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'react-rails', '~> 1.3.0'
 gem 'flux-rails-assets'
-gem 'underscore-rails'
 gem 'react-bootstrap-rails'
 gem 'rails_12factor'
 gem 'puma'

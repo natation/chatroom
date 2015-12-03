@@ -4,6 +4,10 @@ $(function() {
   if (!root) {
     return;
   }
+
+  var Router = ReactRouter.Router;
+  var Route = ReactRouter.Route;
+
   var Chatrooms = React.createClass({
     getInitialState: function() {
       return {chatrooms: ChatroomStore.all()};
@@ -13,7 +17,7 @@ $(function() {
       ApiUtil.fetchAllChatrooms();
     },
     componentWillUnmount: function() {
-      ChatStore.removeChangeListener();
+      ChatStore.removeChangeListener(this._onChange);
     },
     _onChange: function() {
       this.setState({chatrooms: ChatroomStore.all()});
@@ -24,7 +28,7 @@ $(function() {
           {
             this.state.chatrooms.map(function(chatroom, i) {
               return <div className="row" key={i}>
-                       <Chatroom name={chatroom}/>
+                       <ChatroomInfo name={chatroom}/>
                      </div>;
             })
           }
@@ -33,5 +37,10 @@ $(function() {
     }
   });
 
-  React.render(<Chatrooms/>, root);
+  var routes = (
+    <Route path="/" component={Chatrooms}>
+      <Route path="chatroom/:id" component={Chatroom}/>
+    </Route>
+  );
+  React.render(<Router>{routes}</Router>, root);
 });
