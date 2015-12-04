@@ -17,15 +17,19 @@
     },
     render: function() {
       var url = "/chatroom/" + this.props.id;
-
+      var unreadCount = this.state.info.unreadCount || 0;
+      var footer = "";
+      if (this.state.info.unreadCount) {
+        footer = <ul>
+                   <li>Last message by: {this.state.info.lastMessageUser}</li>
+                   <li>Last message: {this.state.info.lastMessage}</li>
+                 </ul>;
+      }
       return (
         <div className="chatroom_info">
           <Link to={url}>{this.props.name}</Link>
-          <ul>
-            <li>Unread Messages: {this.state.info.unreadCount}</li>
-            <li>Last message by: {this.state.info.lastMessageUser}</li>
-            <li>Last message: {this.state.info.lastMessage}</li>
-          </ul>
+          <span className="badge badge-important">{unreadCount}</span>
+          {footer}
         </div>
       );
     }

@@ -1,7 +1,6 @@
 (function(root) {
   'use strict';
-  var _unreadChats = {},
-      _allChats = {};
+  var _unreadChats = {};
   var socket = new WebSocket("ws://" + window.location.host + "/chat");
 
   socket.onmessage = function(e) {
@@ -15,12 +14,10 @@
   var setChat = function (message) {
     var id = message.chatroom_id;
 
-    if (typeof _allChats[id] === "undefined") {
+    if (typeof _unreadChats[id] === "undefined") {
       _unreadChats[id] = [message];
-      _allChats[id] = [message];
     } else {
       _unreadChats[id].push(message);
-      _allChats[id].push(message);
     }
   };
 
@@ -31,7 +28,7 @@
       return unreadChats;
     },
     getInfo: function (id) {
-      var chats = _allChats[id];
+      var chats = _unreadChats[id];
       if (typeof chats === "undefined" || chats.length === 0) {
         return {};
       } else {
