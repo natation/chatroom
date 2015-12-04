@@ -1,8 +1,8 @@
 (function(root) {
   'use strict';
   var Link = ReactRouter.Link;
-  var emoticons = ["😀", "😬", "😁", "😂", "😃", "😄", "😅",
-                   "😆", "😇", "😉", "😋", "😌", "😜", "😛"];
+  var EMOTICONS = ["😀", "😬", "😁", "😂", "😃", "😄",
+                   "😅", "😆", "😇", "😉", "😋", "😌"];
 
   root.Chatroom = React.createClass({
     mixins: [React.addons.LinkedStateMixin],
@@ -11,7 +11,7 @@
               chats: ChatStore.all(this.props.params.id),
               socket: new WebSocket("ws://" + window.location.host + "/chat"),
               message: "",
-              name: "anonymous"};
+              name: ""};
     },
     componentDidMount: function() {
       ChatroomStore.addChangeListener(this._onChatroomChange);
@@ -35,46 +35,48 @@
     _handleSubmit: function(e) {
       e.preventDefault();
       var message = {
-        name: this.state.name,
+        name: this.state.name || "anonymous",
         message: this.state.message,
         chatroom_id: this.props.params.id
       };
       this.state.socket.send(JSON.stringify(message));
     },
+    _handleClick: function(e) {
+      e.preventDefault();
+      this.setState({message: this.state.message + e.target.textContent});
+    },
     render: function() {
       var chatroom = this.state.chatrooms[this.props.params.id - 1];
       return (
         <div className="col-xs-offset-3 col-xs-3">
-          <div className="row chatRoom">
-            <h1>{chatroom} Chatroom</h1>
+          <div className="row chatroom">
+            <h3>{chatroom} Chatroom</h3>
             <label>Your name</label>
-            <input className="form-control" type="text" valueLink={this.linkState("name")}/>
+            <input className="form-control" type="text"
+                   placeholder="Type in your name here" valueLink={this.linkState("name")}/>
             <h3>Messages</h3>
             <ul className="chats">
               {
                 this.state.chats.map(function(chat, i) {
-                  return <li key={i}>{chat.name}: {chat.message} </li>;
+                  return <li key={i}><strong>{chat.name}</strong>: {chat.message} </li>;
                 })
               }
             </ul>
-            <form className="chatInput" onSubmit={this._handleSubmit}>
+            <form className="chat-input" onSubmit={this._handleSubmit}>
               <label>Type message (then press enter)</label>
               <input className="form-control" type="text" valueLink={this.linkState("message")}/>
             </form>
           </div>
-          <div className="row">
-            <div className="btn-toolbar">
-              <div className="btn-group">
-                {
-                  emoticons.map(function(emoticon, i) {
-                    return <button key={i} className="emoticon">{emoticon}</button>;
-                  })
-                }
-              </div>
-            </div>
+          <div className="row emoticon-group">
+            {
+              EMOTICONS.map(function(emoticon, i) {
+                return <button key={i} className="emoticon btn"
+                        onClick={this._handleClick}>{emoticon}</button>;
+              }, this)
+            }
           </div>
           <div className="row">
-            <Link to="/">Back to all chatrooms</Link>
+              <Link to="/" className="btn btn-warning">Back to all chatrooms</Link>
           </div>
         </div>
       );

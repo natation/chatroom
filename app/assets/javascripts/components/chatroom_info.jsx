@@ -27,8 +27,12 @@
       }
       return (
         <div className="chatroom_info">
-          <Link to={url}>{this.props.name}</Link>
-          <span className="badge badge-important">{unreadCount}</span>
+          <h2>
+            <Link to={url}>
+              {this.props.name} <span className="badge badge-important">{unreadCount}</span>
+            </Link>
+          </h2>
+
           {footer}
         </div>
       );

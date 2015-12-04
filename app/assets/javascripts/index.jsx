@@ -17,7 +17,7 @@
     render: function() {
       return (
         <div className="row chatrooms">
-          <div className="col-xs-offset-3 col-xs-3">
+          <div className="col-xs-offset-3 col-xs-6">
             <h1>Chatrooms</h1>
             {
               this.state.chatrooms.map(function(chatroom, i) {

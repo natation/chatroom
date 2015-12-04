@@ -13,7 +13,6 @@
 
   var setChat = function (message) {
     var id = message.chatroom_id;
-
     if (typeof _unreadChats[id] === "undefined") {
       _unreadChats[id] = [message];
     } else {
