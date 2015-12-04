@@ -1,5 +1,21 @@
-Web UI Requirements
--------------------
+# Rep-Chat
+This is my version of a rep chat application that uses React.js front-end
+with a Rails backend. I use websockets over Redis to deliver chat messages.
+
+## How to run
+Make sure you have Ruby, Rails, Postgresql, and Redis installed. On the
+terminal, start the Rails server:
+```
+rails s
+```
+Then on another terminal, start the Redis server:
+```
+redis-server
+```
+Now you can navigate to http://localhost:3000/ in your browser to see the app.
+
+
+## Web UI Requirements
 
 - [x] Connect and set display name
 
@@ -24,8 +40,7 @@ Web UI Requirements
 	· Make the hover element big enough that it slightly overlaps the neighboring emoticons.
 
 
-Server Requirements
--------------------
+## Server Requirements
 
 - [x] Accept connections and display name
 

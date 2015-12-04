@@ -40,6 +40,7 @@
         chatroom_id: this.props.params.id
       };
       this.state.socket.send(JSON.stringify(message));
+      this.setState({message: ""});
     },
     _handleClick: function(e) {
       e.preventDefault();
@@ -58,7 +59,7 @@
             <ul className="chats">
               {
                 this.state.chats.map(function(chat, i) {
-                  return <li key={i}><strong>{chat.name}</strong>: {chat.message} </li>;
+                  return <li key={i}><strong>{chat.name}</strong>: {chat.message}</li>;
                 })
               }
             </ul>
