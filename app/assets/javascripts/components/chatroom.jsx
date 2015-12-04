@@ -54,7 +54,7 @@
             <label>Your name</label>
             <input className="form-control" type="text"
                    placeholder="Type in your name here" valueLink={this.linkState("name")}/>
-            <h3>Messages</h3>
+            <h4>Messages</h4>
             <ul className="chats">
               {
                 this.state.chats.map(function(chat, i) {
