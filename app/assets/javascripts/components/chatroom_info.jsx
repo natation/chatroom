@@ -32,7 +32,6 @@
               {this.props.name} <span className="badge badge-important">{unreadCount}</span>
             </Link>
           </h2>
-
           {footer}
         </div>
       );
